@@ -1,10 +1,18 @@
 package parkinglot;
 
 public class Slot {
-	private int SlotNummber;
+	private int slotNumber;
+	private Car parkedCar;
+	public Slot(int slotNumber) {
+		this.slotNumber = slotNumber;
+	}
 	
-	public Slot() {
-		
+	public boolean IsSlotEmpty() {
+		return true;
+	}
+	
+	public Car GetParkedCarDetails() {
+		return null;
 	}
 	
 	public boolean GetSlotAvailability() {
