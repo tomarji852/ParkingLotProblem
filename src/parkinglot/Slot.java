@@ -19,6 +19,5 @@ public class Slot {
 	
 	public void setParkedCar(ParkedCar parkedCar) {
 		 this.parkedCar = parkedCar;
-	}	
-	
+	}		
 }

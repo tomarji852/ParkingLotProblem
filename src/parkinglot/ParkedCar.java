@@ -10,4 +10,16 @@ public class ParkedCar {
 		this.registrationNumber = regNumber;
 		this.slotOccupied = slotOccupied;
 	}
+	
+	public String getColor() {
+		return color;		
+	}
+	
+	public String getRegistrationNumber() {
+		return registrationNumber;		
+	}
+	
+	public int getSlotNumber() {
+		return slotOccupied;		
+	}
 }
