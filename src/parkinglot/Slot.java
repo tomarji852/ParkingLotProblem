@@ -2,21 +2,23 @@ package parkinglot;
 
 public class Slot {
 	private int slotNumber;
-	private Car parkedCar;
-	public Slot(int slotNumber) {
+	private ParkedCar parkedCar;
+	
+	public Slot(int slotNumber, ParkedCar parkedCar ) {
 		this.slotNumber = slotNumber;
+		this.parkedCar = parkedCar;
 	}
 	
-	public boolean IsSlotEmpty() {
-		return true;
+	public boolean isSlotEmpty() {		
+		return (parkedCar == null);
 	}
 	
-	public Car GetParkedCarDetails() {
-		return null;
+	public ParkedCar getParkedCar() {		
+		return parkedCar;
 	}
 	
-	public boolean GetSlotAvailability() {
-		
-		return true;
-	}
+	public void setParkedCar(ParkedCar parkedCar) {
+		 this.parkedCar = parkedCar;
+	}	
+	
 }

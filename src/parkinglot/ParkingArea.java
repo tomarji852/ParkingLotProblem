@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class ParkingArea {
 	
-	ArrayList<Slot> _slots;
+	private ArrayList<Slot> _slots;
 	
 	public ParkingArea(ArrayList<Slot> slots) {
 		_slots = slots;
 	}
 	
-	public ArrayList<Car> ParkCar() {
+	public ArrayList<ParkedCar> ParkCar() {
 		return null;
 	}
 	
-	public ArrayList<Car> ExitCar() {
+	public ArrayList<ParkedCar> ExitCar() {
 		return null;
 	}
 	
