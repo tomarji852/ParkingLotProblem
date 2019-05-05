@@ -33,7 +33,7 @@ public class ParkingLotManager {
 						
 						case Constants.ParkCar:
 							boolean parkStatus =  parkingArea.parkCar(s[i+1], s[i+2]);
-							if(!parkStatus)System.out.print("No slot is available");
+							if(!parkStatus)System.out.println(Constants.CarUnavailabilityMessage);
 							i = i+3;
 							break;
 							

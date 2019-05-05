@@ -51,19 +51,23 @@ public class ParkingArea {
 	public void status () {
 		for(int i = 0;i<totalNumberOfSlots; ++i) {
 			if(slots.get(i).getParkedCar() != null)
-				System.out.println(i+1 + "   " + slots.get(i).getParkedCar().getRegistrationNumber() + "  " + slots.get(i).getParkedCar().getColor());
-			
+				System.out.println(i+1 + "   " + slots.get(i).getParkedCar().getRegistrationNumber() 
+						+ "  " + slots.get(i).getParkedCar().getColor());			
 		}
 	}
 	
 	public ArrayList<Integer> getSlotNumberByColor(String color) {
 		ArrayList<Integer> slotNumbers = new ArrayList<Integer>(); 
-		
+		boolean found = false;
 		for(Slot slot : this.slots) {
-			if(slot.getParkedCar().getColor() == color) {
+			if(slot.getParkedCar().getColor().equals(color)) {
+				found = true;
 				slotNumbers.add(slot.getParkedCar().getSlotNumber());
+				System.out.print(slot.getParkedCar().getSlotNumber() +", " );
 			}				
 		}
+		if(!found)System.out.print(Constants.NotFoundMessage);
+		System.out.print("\n");
 		
 		return slotNumbers;
 	}
@@ -71,13 +75,17 @@ public class ParkingArea {
 	
 	public ArrayList<Integer> getSlotNumberByRegistration(String regNumber) {
 		ArrayList<Integer> slotNumbers = new ArrayList<Integer>(); 
-		
+		boolean found = false;
 		for(Slot slot : this.slots) {
 			ParkedCar parkedCar = slot.getParkedCar();
-			if(parkedCar.getRegistrationNumber() == regNumber) {
+			if(parkedCar.getRegistrationNumber().equals(regNumber)) {
+				found = true;
 				slotNumbers.add(parkedCar.getSlotNumber());
+				System.out.print(parkedCar.getSlotNumber() +", ");
 			}				
 		}
+		if(!found)System.out.print(Constants.NotFoundMessage);
+		System.out.print("\n");
 		
 		return slotNumbers;
 	}
@@ -85,13 +93,18 @@ public class ParkingArea {
 	
 	public ArrayList<String> getRegistrationNumberByColor(String color) {
 		ArrayList<String> registrationNumber = new ArrayList<String>();
-		
+		boolean found = false;
 		for(Slot slot : this.slots) {
 			ParkedCar parkedCar = slot.getParkedCar();
-			if(parkedCar.getColor() == color) {
+			if(parkedCar.getColor().equals(color)) {
+				found = true;
 				registrationNumber.add(parkedCar.getRegistrationNumber());
+				System.out.print(parkedCar.getRegistrationNumber()+", " );
 			}				
 		}
+		if(!found)System.out.print(Constants.NotFoundMessage);
+		System.out.print("\n");
+		
 		return registrationNumber;
 	}
 	
