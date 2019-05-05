@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class ParkingLotManager {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		
 		System.out.println("Please enter 1 for taking in put using console otherwise enter 2");
-		
+		Scanner choice = new Scanner(System.in);
 		String line = null;
 		BufferedReader lineReader;
 		ParkingArea parkingArea = null;
@@ -20,7 +20,6 @@ public class ParkingLotManager {
 			while((line = lineReader.readLine()) != null) {
 				String[] s = line.split(" ");
 				
-				//System.out.print(line);
 				int i =0;
 				
 				while(i < s.length) {
@@ -33,12 +32,19 @@ public class ParkingLotManager {
 						
 						case Constants.ParkCar:
 							boolean parkStatus =  parkingArea.parkCar(s[i+1], s[i+2]);
-							if(!parkStatus)System.out.println(Constants.CarUnavailabilityMessage);
+							if(!parkStatus) {
+								OutPutWriter.log(Constants.CarUnavailabilityMessage);
+								System.out.println(Constants.CarUnavailabilityMessage);
+							}
 							i = i+3;
 							break;
 							
 						case Constants.ExitCar:
-							parkingArea.exitCar(Integer.parseInt(s[i+1]));
+							boolean exitStatus = parkingArea.exitCar(Integer.parseInt(s[i+1]));
+							if(!exitStatus) {
+								OutPutWriter.log(Constants.ExitMessage);
+								System.out.println(Constants.ExitMessage);
+							}
 							i=i+2;
 							break;
 							
@@ -67,14 +73,6 @@ public class ParkingLotManager {
 		} 
 		catch(IOException e) {
 			System.out.print(e);
-
-		}
-				
-	}
-	
-	public static void log(String message) throws IOException { 
-	      PrintWriter out = new PrintWriter(new FileWriter("output.txt", true), true);
-	      out.write(message);
-	      out.close();
-	    }
+		}				
+	}	
 }

@@ -25,5 +25,7 @@ public final class Constants {
 	
 	public static final String CarUnavailabilityMessage = "Sorry, parking lot is full";
 	
+	public static final String ExitMessage = "Sorry, parking lot is already empty";
+	
 	public static final String NotFoundMessage = "Not found";
 }

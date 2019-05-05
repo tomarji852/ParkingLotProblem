@@ -1,5 +1,6 @@
 package parkinglot;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ParkingArea {
@@ -48,61 +49,82 @@ public class ParkingArea {
 		return isCarExit;
 	}
 	
-	public void status () {
+	public void status () throws IOException {
 		for(int i = 0;i<totalNumberOfSlots; ++i) {
-			if(slots.get(i).getParkedCar() != null)
+			if(slots.get(i).getParkedCar() != null) {
+				OutPutWriter.log(i+1 + "   " + slots.get(i).getParkedCar().getRegistrationNumber() 
+						+ "  " + slots.get(i).getParkedCar().getColor());
 				System.out.println(i+1 + "   " + slots.get(i).getParkedCar().getRegistrationNumber() 
-						+ "  " + slots.get(i).getParkedCar().getColor());			
+						+ "  " + slots.get(i).getParkedCar().getColor());	
+			}
 		}
 	}
 	
-	public ArrayList<Integer> getSlotNumberByColor(String color) {
+	public ArrayList<Integer> getSlotNumberByColor(String color) throws IOException {
 		ArrayList<Integer> slotNumbers = new ArrayList<Integer>(); 
 		boolean found = false;
+		String slots = "";
 		for(Slot slot : this.slots) {
 			if(slot.getParkedCar().getColor().equals(color)) {
 				found = true;
+				slots += slot.getParkedCar().getSlotNumber() +", ";
 				slotNumbers.add(slot.getParkedCar().getSlotNumber());
 				System.out.print(slot.getParkedCar().getSlotNumber() +", " );
 			}				
 		}
-		if(!found)System.out.print(Constants.NotFoundMessage);
+		if(!found) {
+			OutPutWriter.log(Constants.NotFoundMessage);
+			System.out.print(Constants.NotFoundMessage);
+		}
+		OutPutWriter.log(slots);
 		System.out.print("\n");
 		
 		return slotNumbers;
 	}
 	
 	
-	public ArrayList<Integer> getSlotNumberByRegistration(String regNumber) {
+	public ArrayList<Integer> getSlotNumberByRegistration(String regNumber) throws IOException {
 		ArrayList<Integer> slotNumbers = new ArrayList<Integer>(); 
 		boolean found = false;
+		String slots = "";
 		for(Slot slot : this.slots) {
 			ParkedCar parkedCar = slot.getParkedCar();
 			if(parkedCar.getRegistrationNumber().equals(regNumber)) {
 				found = true;
+				slots += parkedCar.getSlotNumber() +", ";
 				slotNumbers.add(parkedCar.getSlotNumber());
 				System.out.print(parkedCar.getSlotNumber() +", ");
 			}				
 		}
-		if(!found)System.out.print(Constants.NotFoundMessage);
+		if(!found) {
+			OutPutWriter.log(Constants.NotFoundMessage);
+			System.out.print(Constants.NotFoundMessage);
+		}
+		OutPutWriter.log(slots);
 		System.out.print("\n");
-		
+				
 		return slotNumbers;
 	}
 	
 	
-	public ArrayList<String> getRegistrationNumberByColor(String color) {
+	public ArrayList<String> getRegistrationNumberByColor(String color) throws IOException {
 		ArrayList<String> registrationNumber = new ArrayList<String>();
 		boolean found = false;
+		String regNumbers = "";
 		for(Slot slot : this.slots) {
 			ParkedCar parkedCar = slot.getParkedCar();
 			if(parkedCar.getColor().equals(color)) {
 				found = true;
+				regNumbers += parkedCar.getRegistrationNumber()+", ";
 				registrationNumber.add(parkedCar.getRegistrationNumber());
 				System.out.print(parkedCar.getRegistrationNumber()+", " );
 			}				
 		}
-		if(!found)System.out.print(Constants.NotFoundMessage);
+		if(!found) {
+			OutPutWriter.log(Constants.NotFoundMessage);
+			System.out.print(Constants.NotFoundMessage);
+		}
+		OutPutWriter.log(regNumbers);
 		System.out.print("\n");
 		
 		return registrationNumber;
