@@ -43,11 +43,18 @@ public class ParkingArea {
 		if(!slots.get(slotNumber-1).isSlotEmpty()) {
 			slots.get(slotNumber-1).setParkedCar(null);
 			isCarExit = true;
-		}
+		} 
 		
 		return isCarExit;
 	}
 	
+	public void status () {
+		for(int i = 0;i<totalNumberOfSlots; ++i) {
+			if(slots.get(i).getParkedCar() != null)
+				System.out.println(i+1 + "   " + slots.get(i).getParkedCar().getRegistrationNumber() + "  " + slots.get(i).getParkedCar().getColor());
+			
+		}
+	}
 	
 	public ArrayList<Integer> getSlotNumberByColor(String color) {
 		ArrayList<Integer> slotNumbers = new ArrayList<Integer>(); 
