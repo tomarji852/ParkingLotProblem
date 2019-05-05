@@ -6,44 +6,61 @@ import java.util.Scanner;
 
 public class ParkingLotManager {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		
-		System.out.println("Please enter 1 for taking in put using console otherwise enter 2");
+		System.out.println(Constants.InputGetterMessage);
 		Scanner choice = new Scanner(System.in);
+		int a = choice.nextInt();
+		
 		String line = null;
-		BufferedReader lineReader;
+		BufferedReader lineReader = null;
 		ParkingArea parkingArea = null;
+		
+		switch(a) {
+			case 1:
+				lineReader = new BufferedReader(new InputStreamReader(System.in));
+				break;
+			case 2:
+				try {
+					lineReader = new BufferedReader(new InputStreamReader(
+							new FileInputStream(System.getProperty("user.dir") + "/inp/file_inputs.txt")));							
+				}
+				catch(IOException e) {
+					System.out.print(e);
+				}
+				break;
+			}
+		
 		try {
-			lineReader = new BufferedReader(new InputStreamReader(
-					new FileInputStream(System.getProperty("user.dir") + "/inp/file_inputs.txt")));
-
 			while((line = lineReader.readLine()) != null) {
 				String[] s = line.split(" ");
 				
-				int i =0;
-				
+				int i =0;						
 				while(i < s.length) {
-
 					switch(s[i]) {
 						case Constants.CreateParkinLot:
-							parkingArea = new ParkingArea(Integer.parseInt(s[+1]));
+							if(i+1 < s.length)parkingArea = new ParkingArea(Integer.parseInt(s[i+1]));
 							i = i+2;
 							break;
 						
 						case Constants.ParkCar:
-							boolean parkStatus =  parkingArea.parkCar(s[i+1], s[i+2]);
-							if(!parkStatus) {
-								OutPutWriter.log(Constants.CarUnavailabilityMessage);
-								System.out.println(Constants.CarUnavailabilityMessage);
+							if(i+2 < s.length) {
+								boolean parkStatus =  parkingArea.parkCar(s[i+1], s[i+2]);
+								if(!parkStatus) {
+									OutPutWriter.log(Constants.CarUnavailabilityMessage);
+									System.out.println(Constants.CarUnavailabilityMessage);
+								}
 							}
 							i = i+3;
 							break;
 							
 						case Constants.ExitCar:
-							boolean exitStatus = parkingArea.exitCar(Integer.parseInt(s[i+1]));
-							if(!exitStatus) {
-								OutPutWriter.log(Constants.ExitMessage);
-								System.out.println(Constants.ExitMessage);
+							if(i+1 < s.length) {
+								boolean exitStatus = parkingArea.exitCar(Integer.parseInt(s[i+1]));
+								if(!exitStatus) {
+									OutPutWriter.log(Constants.ExitMessage);
+									System.out.println(Constants.ExitMessage);
+								}
 							}
 							i=i+2;
 							break;
@@ -54,25 +71,31 @@ public class ParkingLotManager {
 							break;
 							
 						case Constants.RegNumberByColor:
-							parkingArea.getRegistrationNumberByColor(s[i+1]);
+							if(i+1 < s.length)parkingArea.getRegistrationNumberByColor(s[i+1]);
 							i = i+2;
 							break;	
 							
 						case Constants.SlotNumberByColor:
-							parkingArea.getSlotNumberByColor(s[i+1]);
+							if(i+1 < s.length)parkingArea.getSlotNumberByColor(s[i+1]);
 							i = i+2;
 							break;	
 						
 						case Constants.SlotNumberByRegNumber:
-							parkingArea.getSlotNumberByRegistration(s[i+1]);
+							if(i+1 < s.length)parkingArea.getSlotNumberByRegistration(s[i+1]);
 							i = i+2;
-							break;							
-					}
+							break;
+						default :
+							System.out.println(Constants.InvalidInput);
+							OutPutWriter.log(Constants.InvalidInput);
+							i++;
+							break;
+					} 
 				}							
 			}
-		} 
+		}
 		catch(IOException e) {
 			System.out.print(e);
-		}				
-	}	
-}
+		}
+	} 
+}	
+ 

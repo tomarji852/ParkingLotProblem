@@ -65,7 +65,7 @@ public class ParkingArea {
 		boolean found = false;
 		String slots = "";
 		for(Slot slot : this.slots) {
-			if(slot.getParkedCar().getColor().equals(color)) {
+			if(slot.getParkedCar() !=null && slot.getParkedCar().getColor().equals(color)) {
 				found = true;
 				slots += slot.getParkedCar().getSlotNumber() +", ";
 				slotNumbers.add(slot.getParkedCar().getSlotNumber());
@@ -89,7 +89,7 @@ public class ParkingArea {
 		String slots = "";
 		for(Slot slot : this.slots) {
 			ParkedCar parkedCar = slot.getParkedCar();
-			if(parkedCar.getRegistrationNumber().equals(regNumber)) {
+			if(slot.getParkedCar() !=null && parkedCar.getRegistrationNumber().equals(regNumber)) {
 				found = true;
 				slots += parkedCar.getSlotNumber() +", ";
 				slotNumbers.add(parkedCar.getSlotNumber());
@@ -113,7 +113,7 @@ public class ParkingArea {
 		String regNumbers = "";
 		for(Slot slot : this.slots) {
 			ParkedCar parkedCar = slot.getParkedCar();
-			if(parkedCar.getColor().equals(color)) {
+			if(slot.getParkedCar() !=null && parkedCar.getColor().equals(color)) {
 				found = true;
 				regNumbers += parkedCar.getRegistrationNumber()+", ";
 				registrationNumber.add(parkedCar.getRegistrationNumber());
