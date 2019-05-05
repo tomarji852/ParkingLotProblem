@@ -15,10 +15,12 @@ There is one simple rule when a car enters inside a parking lot, it will given a
 - It will allow cars inside the parking area only if there is any empty slot
 - It has feature to exit any car from any slot at any time
 - It has feature to give the information of cat for given commands i.e, getSlotNumberByCarRegistration or getRegistrationBySlotNumber etc.
+- No eternal library is used for completion of this project (Only JUnit is used for unit testing)
 
 ## System Requirements
 - Java
 - bash shell (to run on windows)
+- Eclipse or Intellij (IDE) 
 - provide the input file inside the application directory
 
 
