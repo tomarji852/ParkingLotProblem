@@ -1,0 +1,16 @@
+Sorry, parking lot is already empty
+1   KA-01-HH-1234  White
+2   KA-01-HH-9999  White
+3   KA-01-BB-0001  Black
+4   KA-01-HH-7777  Red
+This is not a valid input. Please enter valid input
+This is not a valid input. Please enter valid input
+Not found
+
+Not found
+
+1, 
+1, 3, 
+KA-012-12, KA-014-16, 
+Not found
+

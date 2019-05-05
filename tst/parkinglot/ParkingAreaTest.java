@@ -5,6 +5,7 @@ package parkinglot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -84,7 +85,7 @@ class ParkingAreaTest {
 	}
 	
 	@Test
-	void testGetSlotNumberByColorForGivenColorThenReturnListOfSlotNumbersWith2Entries() {
+	void testGetSlotNumberByColorForGivenColorThenReturnListOfSlotNumbersWith2Entries() throws IOException {
 		//Given: 3 car are parked and two of them are of white color 
 		int totalSlots = 3;
 		String color = "White";
@@ -102,7 +103,7 @@ class ParkingAreaTest {
 	}
 	
 	@Test
-	void testGetSlotNumberByColorForGivenColorAndNoCarIsPresentInThenSlotForThatColorThenReturnZeroSlot() {
+	void testGetSlotNumberByColorForGivenColorAndNoCarIsPresentInThenSlotForThatColorThenReturnZeroSlot() throws IOException {
 		//Given: 3 car are parked and none of them are of white color 
 		int totalSlots = 3;
 		String color = "White";
@@ -119,7 +120,7 @@ class ParkingAreaTest {
 	}
 	
 	@Test
-	void testgetSlotNumberByRegistrationForGivenRegistrationThenReturnListOfSlotNumbersWith1Entries() {
+	void testgetSlotNumberByRegistrationForGivenRegistrationThenReturnListOfSlotNumbersWith1Entries() throws IOException {
 		//Given: 3 car are parked and there is one car with given registration number
 		int totalSlots = 3;
 		String registration = "KA-012-12";
@@ -136,7 +137,7 @@ class ParkingAreaTest {
 	}
 	
 	@Test
-	void testGetSlotNumberByRegistrationForGivenRegistrationThenReturnListOfSlotNumbersWith0Entries() {
+	void testGetSlotNumberByRegistrationForGivenRegistrationThenReturnListOfSlotNumbersWith0Entries() throws IOException {
 		//Given: 3 car are parked and there is no car with given registration number
 		int totalSlots = 3;
 		String registrateion = "MA-012-12";
@@ -153,7 +154,7 @@ class ParkingAreaTest {
 	}
 	
 	@Test
-	void testGetRegistrationNumberByColorForGivenColorThenReturnListOfSlotNumbersWith2Entries() {
+	void testGetRegistrationNumberByColorForGivenColorThenReturnListOfSlotNumbersWith2Entries() throws IOException {
 		//Given: 3 car are parked and there are two cars of given color
 		int totalSlots = 3;
 		String color = "White";
@@ -171,7 +172,7 @@ class ParkingAreaTest {
 	}
 	
 	@Test
-	void testGetRegistrationNumberByColorForGivenColorThenReturnListOfSlotNumbersWith0Entries() {
+	void testGetRegistrationNumberByColorForGivenColorThenReturnListOfSlotNumbersWith0Entries() throws IOException {
 		//Given: 3 car are parked and there are no cars of given color
 		int totalSlots = 3;
 		String color = "Red";

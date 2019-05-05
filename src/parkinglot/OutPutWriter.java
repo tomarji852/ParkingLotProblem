@@ -21,7 +21,8 @@ public class OutPutWriter {
 	 * @throws IOException
 	 */
 	public static void log(String message) throws IOException { 
-	      PrintWriter writer = new PrintWriter(new FileWriter(System.getProperty("user.dir") + "/output/file_output.txt", true), true);
+	      PrintWriter writer = new PrintWriter(new FileWriter(System.getProperty("user.dir") + 
+	    		  "/output/file_output.txt", true), true);
 	      writer.write(message + "\n");	      
 	      writer.close();
 	}
