@@ -7,7 +7,7 @@ public class Slot {
 	public Slot(int slotNumber, ParkedCar parkedCar ) {
 		this.slotNumber = slotNumber;
 		this.parkedCar = parkedCar;
-	}
+	} 
 	
 	public boolean isSlotEmpty() {		
 		return (parkedCar == null);

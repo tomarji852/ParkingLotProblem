@@ -4,13 +4,20 @@
 package parkinglot;
 
 /**
+ * This class provide all the constants used in the application
  * @author Sunil
  *
  */
 public final class Constants {
 
-	public static final String InputGetterMessage = "Please enter 1 for taking input from console enter 2 for text file: \n";
+	/*
+	 * Initial Message for user to take mode of input either from file or from console  
+	 */
+	public static final String InputGetterMessage = "Please enter 1 for taking input from console enter 2 for text file: ";
 	
+	/*
+	 * Command to create total
+	 */
 	public static final String CreateParkinLot = "create_parking_lot";
 	
 	public static final String ParkCar = "park";

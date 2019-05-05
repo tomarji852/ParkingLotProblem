@@ -3,6 +3,12 @@ package parkinglot;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class holds properties and the functionality 
+ * of parking area 
+ * @author Sunil
+ *
+ */
 public class ParkingArea {
 	
 	private int currentEmptySlots;
@@ -19,15 +25,17 @@ public class ParkingArea {
 	
 	
 	/**
-	 * 
+	 * This method allow a car to park inside parking area 
+	 * and it will update the list of slots
 	 * @param regNumber
 	 * @param color
-	 */
+	 * @return the boolean status for parked car
+	 */ 
 	public boolean parkCar(String regNumber, String color) {			
 		boolean isCarParked = false;
 		
 		for(int i =0;i<this.totalNumberOfSlots;++i) {
-			if(slots.get(i).isSlotEmpty()) {
+			if(slots != null && slots.get(i).isSlotEmpty()) {
 				slots.get(i).setParkedCar(new ParkedCar(color, regNumber, i+1));
 				isCarParked = true;
 				break;
@@ -37,7 +45,11 @@ public class ParkingArea {
 		return isCarParked;
 	}
 	
-	
+	/**
+	 * This method will update the slots when a car leaves the parking area
+	 * @param slotNumber
+	 * @return the status true if car leaves otherwise returns false
+	 */
 	public boolean exitCar(int slotNumber) {
 		boolean isCarExit = false;
 		
@@ -49,6 +61,11 @@ public class ParkingArea {
 		return isCarExit;
 	}
 	
+	/**
+	 * This method write the status of parking are at any given time
+	 * in out put file and in console 
+	 * @throws IOException if out put is not found
+	 */
 	public void status () throws IOException {
 		for(int i = 0;i<totalNumberOfSlots; ++i) {
 			if(slots.get(i).getParkedCar() != null) {
@@ -60,6 +77,12 @@ public class ParkingArea {
 		}
 	}
 	
+	/**
+	 * This method write the list of slotsNumbers for given color in out put file
+	 * @param color
+	 * @return the list of all slots have cars of given colors
+	 * @throws IOException
+	 */
 	public ArrayList<Integer> getSlotNumberByColor(String color) throws IOException {
 		ArrayList<Integer> slotNumbers = new ArrayList<Integer>(); 
 		boolean found = false;
@@ -82,7 +105,12 @@ public class ParkingArea {
 		return slotNumbers;
 	}
 	
-	
+	/**
+	 * This method write the list of slotsNumbers for a given registration number
+	 * @param regNumber
+	 * @return the list of slots for given registration 
+	 * @throws IOException
+	 */
 	public ArrayList<Integer> getSlotNumberByRegistration(String regNumber) throws IOException {
 		ArrayList<Integer> slotNumbers = new ArrayList<Integer>(); 
 		boolean found = false;
@@ -106,7 +134,12 @@ public class ParkingArea {
 		return slotNumbers;
 	}
 	
-	
+	/**
+	 * This method write the list of registration numbers for given color of cars
+	 * @param color
+	 * @return the list of registration numbers
+	 * @throws IOException
+	 */
 	public ArrayList<String> getRegistrationNumberByColor(String color) throws IOException {
 		ArrayList<String> registrationNumber = new ArrayList<String>();
 		boolean found = false;
